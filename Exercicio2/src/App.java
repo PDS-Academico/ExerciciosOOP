@@ -12,12 +12,10 @@ import java.util.Scanner;
 
 public class App{
     public static void main(String args[]){ 
-      
-      System.out.println("Quantos anos de experiencia ele tem?");
-      int experiencia  = s.nextInt();
-      Professor p = new Professor(nome,experiencia);
-      System.out.println(p.toString());
-      System.out.println("Categoria:"+p.classifica());
-      s.close();
+        Scanner s = new Scanner(System.in);
+        Professor p = new Professor(null,0);
+        System.out.println(p.toString());
+        System.out.println("Categoria:"+p.classifica());
+        s.close();
     }
   }
