@@ -1,10 +1,23 @@
+import java.util.Scanner;
+
 public class Professor {
     private String nome;
     private int anosExperiencia;
 
     public Professor(String nome, int anosExperiencia) {
-        this.nome = nome;
-        this.anosExperiencia = anosExperiencia;
+        Scanner s = new Scanner(System.in);
+
+        if (nome!= null){this.nome = nome;}
+        else {
+        System.out.println("Nome do professor?");
+        this.nome  = s.next();
+        }
+
+        if(anosExperiencia>0){this.anosExperiencia = anosExperiencia;}
+        else {
+            System.out.println("Quantos anos de experiencia ele tem?");
+            this.anosExperiencia  = s.nextInt(); s.next();
+        }
     }
 
     public String getNome() {
