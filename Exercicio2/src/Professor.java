@@ -4,20 +4,19 @@ public class Professor {
     private String nome;
     private int anosExperiencia;
 
-    public Professor(String nome, int anosExperiencia) {
+    public Professor(){
         Scanner s = new Scanner(System.in);
-
-        if (nome!= null){this.nome = nome;}
-        else {
         System.out.println("Nome do professor?");
         this.nome  = s.next();
-        }
+        System.out.println("Quantos anos de experiencia ele tem?");
+        this.anosExperiencia  = s.nextInt(); s.next();
+        s.close();
 
-        if(anosExperiencia>0){this.anosExperiencia = anosExperiencia;}
-        else {
-            System.out.println("Quantos anos de experiencia ele tem?");
-            this.anosExperiencia  = s.nextInt(); s.next();
-        }
+    }
+
+    public Professor(String nome, int anosExperiencia) {
+        this.nome = nome;
+        this.anosExperiencia = anosExperiencia;
     }
 
     public String getNome() {
