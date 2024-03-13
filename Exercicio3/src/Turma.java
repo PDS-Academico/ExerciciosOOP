@@ -1,3 +1,4 @@
+import java.util.Arrays;
 class Turma{
     private int numero;
     private String professor;
@@ -40,10 +41,10 @@ class Turma{
                 return null;
             }
         }
-        return alunos[n];
+        return Arrays.copyOf(alunos[n]);
     }
     public Aluno[] lista(){
-        return alunos;
+        return Arrays.copyOf(lista);
     }
     public Aluno[] aprovados(){
         int n=0;
