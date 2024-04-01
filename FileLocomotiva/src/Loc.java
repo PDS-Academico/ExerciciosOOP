@@ -10,30 +10,41 @@ public class Loc {
 
     public void scan(String file){
         String dir = Paths.get("").toAbsolutePath().toString();
-        String filedir = dir +"\\src\\"+file+".dat";
+        String filedir = dir +"\\"+file+".txt";
         Path path = Paths.get(filedir);
-        
-
 
         try (Scanner sc = new Scanner(Files.newBufferedReader(path, StandardCharsets.UTF_8))){
             while(sc.hasNextLine()){
                 String linha = sc.nextLine();
                 String [] locomotiva = linha.split(";");
-                System.err.println("Id: "+ locomotiva[0] + ". Peso Máximo: " + locomotiva[1]+ ". Nº de vagões máximo: "+locomotiva[2]+".\n");
+                System.out.println("Id: "+ locomotiva[0] + ". Peso Máximo: " + locomotiva[1]+ ". Nº de vagões máximo: "+locomotiva[2]+".\n");
             }
         }
 
         catch (IOException x){System.err.format("Erro de E/S: %s%n", x);}
     }
 
-    public void write(String file){
+    public void write(String file, Scanner in){
         String dir = Paths.get("").toAbsolutePath().toString();
-        String filedir = dir +"\\src\\"+file+".dat";
+        String filedir = dir +"\\"+file+".txt";
         Path path = Paths.get(filedir);
-        Scanner in = new Scanner(System.in);
         boolean end = false;
+        String s ="";
+
+        if(Files.exists(path)){
+            try (Scanner sc = new Scanner(Files.newBufferedReader(path, StandardCharsets.UTF_8))){
+                while(sc.hasNextLine()){
+                    s = sc.nextLine()+"\n";
+                }
+            }
+    
+            catch (IOException x){System.err.format("Erro de E/S: %s%n", x);}
+        }
+
+        
         
         try (PrintWriter w = new PrintWriter(Files.newBufferedWriter(path, StandardCharsets.UTF_8))){
+            w.print(s);
             while (!end){
                 System.out.println("Digite o id da locomotiva:");
                 w.print(in.nextInt()+";");
@@ -44,13 +55,11 @@ public class Loc {
                 
                 System.out.println("Deseja adicionar mais uma locomotiva? \n1) Sim \n2) Não");
                 if (in.nextInt()==1){w.print("\n");}
-                else{end = true;}
+                else{end = true; break;}
             }
-
         }
 
         catch (IOException x){System.err.format("Erro de E/S: %s%n", x);}
-        in.close();
     }
 }
 
