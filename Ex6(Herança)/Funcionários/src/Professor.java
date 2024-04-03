@@ -7,7 +7,7 @@ public class Professor extends Funcionario {
     }
 
     public getSalarioLiquido(){
-        double salMes = salarioBase/44;
+        double salMes = getSalarioBase()/44;
         return salMes*cargaHorariaMensal;
     }
 

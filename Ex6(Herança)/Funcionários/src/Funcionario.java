@@ -7,7 +7,10 @@ public abstract class Funcionario {
         salarioBase = sal;
     }
 
-    public double getSalarioLiquido();
+    public double getSalarioBase(){return salarioBase;}
+    public String getNome(){return nome;}
+
+    public abstract double getSalarioLiquido();
 
     public String toString(){
         return "Nome: "+ nome;
