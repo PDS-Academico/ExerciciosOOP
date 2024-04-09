@@ -22,11 +22,10 @@ public class Ponto {
     public void setX(double x) {this.x = x;}
     public void setY(double y) {this.y = y;}
 
-    public static distancia(Ponto a, Ponto b){
-        double ax = a.getX();
-        double ay = a.getY();
-        double bx = b.getX();
-        double by = b.getX();
+    public static double distancia(Ponto a, Ponto b){
+        if (a.getX()==b.getX()){return Math.abs(a.getY()-b.getY());}
+        if (a.getY()==b.getY()){return Math.abs(a.getX()-b.getX());}
+        return Math.sqrt(Math.pow(a.getX()-b.getX(), 2)+Math.pow(a.getY()-b.getY(), 2));
     }
 
 }
