@@ -1,43 +1,48 @@
-public class Game {
-    private final PinoColorido[] solution;
+import java.util.Random;
+public class Game {//Pedro
+    private PinoColorido[] solution;
     private int attempts;
     private int colorRange;
     private int size;
 
 
-    public Game(PinoColorido[] solution, int attempts, int colorRange, int size) {
-        //TODO make password builder makePass()
-        this.solution = solution;//temporario
+    public Game(int attempts, int colorRange, int size){//Pedro
+        makePass();
         this.attempts = attempts;
         this.colorRange = colorRange;
         this.size = size;
         play();
     }
 
-    private void play(){
+    private void play(){//Pedro
         boolean win =false;
-        for (int i = 0; i < attempts; i++) {
+        for (int i = attempts; i > 0; i--) {
             win = round();
             if(win){break;}
         }
+        if(win){}//ganhou
+        else{}//perdeu
 
     }
 
-    private boolean round(){
+    private boolean round(){//Pedro
         PinoColorido[] tentativa = new PinoColorido[size];
+        // monta a tentativa
+
         int [] pinos = Compara(tentativa, solution);
-        return pinos[0]==size;
+
+
         //add tentativa na lista
+        return pinos[0]==size;
     }
 
-    private void cycle(PinoColorido c){
+    private void cycle(PinoColorido c){//Pedro
         int i = c.cor.index()+1;
         if (i>=colorRange){i=0;}
-        COLOR[] array = COLOR.values();
-        c.setCor(array[i]);
+        c.setCor(i);
     }
 
-    public int[] Compara(PinoColorido[] a,PinoColorido[]b){
+    public int[] Compara(PinoColorido[] a,PinoColorido[]b){//Pedro
         int[] results = new int[2];
         int[] ac = new int[colorRange];//4 cores por enquanto;
         int[] bc = new int[colorRange];
@@ -55,6 +60,14 @@ public class Game {
         results[1]-=results[0];
 
         return results;
+    }
+
+    public void makePass(){//Pedro
+        solution = new PinoColorido[size];
+        Random r = new Random();
+        for (int i = 0; i < size; i++) {
+            solution[i]= new PinoColorido(r.nextInt(colorRange+1));
+        }
     }
 
 

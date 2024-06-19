@@ -1,11 +1,14 @@
 import javax.swing.JButton;
 
-public class PinoColorido extends JButton {
+public class PinoColorido extends JButton {//Pedro
     public COLOR cor;
     public PinoColorido(COLOR c){
         super(" ");
-        cor = c;
-        setCor();
+        setCor(c);
+    }
+    public PinoColorido(int index){
+        super(" ");
+        setCor(index);
     }
 
 
@@ -15,6 +18,12 @@ public class PinoColorido extends JButton {
 
     public void setCor(COLOR c){
         cor = c;
+        setCor();
+    }
+
+    public void setCor(int index){
+        COLOR[] array = COLOR.values();
+        cor = (array[index]);
         setCor();
     }
 
